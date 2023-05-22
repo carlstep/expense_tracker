@@ -1,6 +1,15 @@
+// the model for data in the app
+
 import 'package:uuid/uuid.dart';
 
 const uuid = Uuid();
+
+enum Category {
+  food,
+  travel,
+  leisure,
+  work,
+}
 
 // class to group the data fields
 class Expense {
@@ -8,10 +17,12 @@ class Expense {
     required this.title,
     required this.amount,
     required this.date,
+    required this.category,
   }) : id = uuid.v4();
 
   final String id;
   final String title;
   final double amount;
   final DateTime date;
+  final Category category;
 }
