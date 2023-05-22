@@ -26,6 +26,15 @@ class _ExpensesState extends State<Expenses> {
     )
   ];
 
+  void _openAddExpenseOverlay() {
+    // context > gives widget meta information & information in
+    // relation to other widgets in the widget tree
+    showModalBottomSheet(
+      context: context,
+      builder: (ctx) => const Text('modal bottom sheet data'),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,8 +42,8 @@ class _ExpensesState extends State<Expenses> {
         title: const Text('Expense Tracker'),
         actions: [
           IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.add),
+            onPressed: _openAddExpenseOverlay,
+            icon: const Icon(Icons.add),
           ),
         ],
       ),
