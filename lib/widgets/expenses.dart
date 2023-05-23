@@ -31,6 +31,9 @@ class _ExpensesState extends State<Expenses> {
     // context > gives widget meta information & information in
     // relation to other widgets in the widget tree
     showModalBottomSheet(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+      ),
       context: context,
       builder: (ctx) => const NewExpense(),
     );
