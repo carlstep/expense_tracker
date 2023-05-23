@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+
 import 'package:expense_tracker/models/expense.dart';
 
 class NewExpense extends StatefulWidget {
@@ -26,6 +26,7 @@ class _NewExpenseState extends State<NewExpense> {
     );
     setState(() {
       _selectedDate = pickedDate;
+      print(pickedDate);
     });
   }
 
@@ -86,6 +87,20 @@ class _NewExpenseState extends State<NewExpense> {
           ),
           Row(
             children: [
+              DropdownButton(
+                  items: Category.values
+                      .map(
+                        (catergory) => DropdownMenuItem(
+                          value: catergory,
+                          child: Text(
+                            catergory.name.toString(),
+                          ),
+                        ),
+                      )
+                      .toList(),
+                  onChanged: (value) {
+                    print(value);
+                  }),
               OutlinedButton(
                 onPressed: () {
                   Navigator.pop(context);
