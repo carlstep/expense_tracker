@@ -13,6 +13,7 @@ class _NewExpenseState extends State<NewExpense> {
   final _titleController = TextEditingController();
   final _amountController = TextEditingController();
   DateTime? _selectedDate;
+  Category _selectedCategory = Category.leisure;
 
   void _presentDatePicker() async {
     final now = DateTime.now();
@@ -85,22 +86,33 @@ class _NewExpenseState extends State<NewExpense> {
               ),
             ],
           ),
+          SizedBox(
+            height: 16,
+          ),
           Row(
             children: [
               DropdownButton(
-                  items: Category.values
-                      .map(
-                        (catergory) => DropdownMenuItem(
-                          value: catergory,
-                          child: Text(
-                            catergory.name.toString(),
-                          ),
+                value: _selectedCategory,
+                items: Category.values
+                    .map(
+                      (catergory) => DropdownMenuItem(
+                        value: catergory,
+                        child: Text(
+                          catergory.name.toUpperCase(),
                         ),
-                      )
-                      .toList(),
-                  onChanged: (value) {
-                    print(value);
-                  }),
+                      ),
+                    )
+                    .toList(),
+                onChanged: (value) {
+                  setState(() {
+                    if (value == null) {
+                      return;
+                    }
+                    _selectedCategory = value;
+                  });
+                },
+              ),
+              const Spacer(),
               OutlinedButton(
                 onPressed: () {
                   Navigator.pop(context);
@@ -108,7 +120,7 @@ class _NewExpenseState extends State<NewExpense> {
                 child: const Text('Cancel'),
               ),
               const SizedBox(
-                width: 30,
+                width: 16,
               ),
               ElevatedButton(
                 onPressed: () {
