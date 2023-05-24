@@ -35,8 +35,15 @@ class _ExpensesState extends State<Expenses> {
         borderRadius: BorderRadius.circular(20),
       ),
       context: context,
-      builder: (ctx) => const NewExpense(),
+      builder: (ctx) => NewExpense(onAddExpense: _addExpense),
     );
+  }
+
+// method to add a valid expense
+  void _addExpense(Expense expense) {
+    setState(() {
+      _registeredExpenses.add(expense);
+    });
   }
 
   @override
