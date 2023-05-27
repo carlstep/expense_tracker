@@ -32,6 +32,7 @@ class _ExpensesState extends State<Expenses> {
     // context > gives widget meta information & information in
     // relation to other widgets in the widget tree
     showModalBottomSheet(
+      useSafeArea: true,
       isScrollControlled: true,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
